@@ -18,7 +18,7 @@ body, html {
 .bg {
     position: relative;
     width: 70%;
-    height: 80%;
+    min-height:80%;
     background-color: #f0f8ff;
     border: 2px solid #316139;
     border-radius: 10px;
@@ -27,7 +27,7 @@ body, html {
 .scoreboard{
     display: flex;
     background-color:#589963 ;
-    height: 15%;
+    min-height: 80px;
     align-items: center;
     justify-content: center;
     font-weight: 600;
@@ -57,6 +57,7 @@ body, html {
     gap: 10px;
     align-items: center;
     justify-content: center;
+    height: auto;
 }
 .bubble{
     height: 60px;
