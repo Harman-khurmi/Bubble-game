@@ -12,13 +12,13 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height:100vh;
     background-color: #a1dbab;
 }
 .bg {
     position: relative;
     width: 70%;
-    min-height:80%;
+    max-height: 90vh;
     background-color: #f0f8ff;
     border: 2px solid #316139;
     border-radius: 10px;
@@ -32,6 +32,8 @@ body, html {
     justify-content: center;
     font-weight: 600;
     gap: 10%;
+    min-width: 80%;
+    flex-wrap: wrap;
 }
 .topelts{
     display: flex;
@@ -57,7 +59,7 @@ body, html {
     gap: 10px;
     align-items: center;
     justify-content: center;
-    height: auto;
+    height: calc(90vh - 80px);
 }
 .bubble{
     height: 60px;
@@ -75,10 +77,6 @@ body, html {
     background-color: #4e8b58;
 }
 .game-over{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color:#589963;
     color: white;
     padding: 30px;
