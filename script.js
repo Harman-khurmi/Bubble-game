@@ -1,26 +1,38 @@
 var gameArea = document.querySelector('.game-area');
-var timer = 0;
+var timer = 60;
 var score = 0;
+document.getElementById('score').innerText = score;
+document.getElementById('timer').innerText = timer;
 var hitValue = document.querySelector("#hit");
 var rn = Math.floor(Math.random() * 10);
 hitValue.innerHTML = rn;
 
 function generateBubbles() {
     gameArea.innerHTML = '';
-for (var i = 1; i <= 98; i++) {
-    var rn = Math.floor(Math.random() * 10);
-    gameArea.innerHTML += `<div class="bubble">${rn}</div>`;
-}
+    for (var i = 1; i <= 98; i++) {
+        var rn = Math.floor(Math.random() * 10);
+        gameArea.innerHTML += `<div class="bubble">${rn}</div>`;
+    }
 }
 generateBubbles();
 
 function checkHit() {
+    // gameArea.addEventListener('click', (e) => {
+    //     console.log(e.target.innerHTML);
+    //     if (e.target.innerHTML == hitValue.innerHTML) {
+    //         getScore();
+    //         var rn = Math.floor(Math.random() * 10);
+    //         hitValue.innerHTML = rn;
+    //         generateBubbles();
+    //     }
+    // });
     gameArea.addEventListener('click', (e) => {
-        console.log(e.target.innerHTML);
-        if (e.target.innerHTML == hitValue.innerHTML) {
+        if (!e.target.classList || !e.target.classList.contains('bubble')) return;
+        const clicked = +e.target.innerText; //Numer(e.target.innerText)
+        const target = +hitValue.innerText;
+        if (clicked === target && timer > 0) {
             getScore();
-            var rn = Math.floor(Math.random() * 10);
-            hitValue.innerHTML = rn;
+            hitValue.innerText = Math.floor(Math.random() * 10);
             generateBubbles();
         }
     });
@@ -37,7 +49,7 @@ function setTimer() {
             gameArea.innerHTML = `<div class="game-over"><h1>Game Over</h1><p>Your Score: ${score}</p><button class="restart">Restart Game</button></div>`;
             hitValue.innerHTML = `-`;
             var restartButton = document.querySelector('.restart');
-            restartButton.addEventListener('click', function() {
+            restartButton.addEventListener('click', function () {
                 // Reset game state
                 timer = 60;
                 score = 0;
